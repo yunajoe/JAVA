@@ -39,14 +39,7 @@ public class Operator {
         System.out.println(false || false);
 
         System.out.println(!true);
-        System.out.println(!false);
-
-
-
-
-
-
-
+        System.out.println(!false); 
 
 
 
