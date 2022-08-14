@@ -32,9 +32,7 @@ public class Exercise1 {
         year = 1989;
         month = 6;
         day = 20;
-        married = false;
-
-
+        married = false; 
 
     }
 }
