@@ -38,11 +38,7 @@ public class Types {
 
 
         System.out.print(str);
-        System.out.print(str2);
-
-
-
-
+        System.out.print(str2); 
 
 
 
