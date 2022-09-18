@@ -1,33 +1,46 @@
 public class BankAccount {
-    int balance;
-    // Person 클래스를 자료형처럼 사용
-    // owner변수는 Person타입을 갖게 된다
-    Person owner;
+    private int balance;
+    private Person owner;
+
+    public void setBalance(int pBalance){
+        balance = pBalance;
+    }
+    public int getBalance(){
+        return balance;
+    }
+
+    public void setOwner(Person pOwner){
+        owner = pOwner;
+    }
+    public Person getOwner(){
+        return owner;
+    }
 
     // 파라미터: 입금할 액수
     // 리턴: 성공여부(boolean)
     boolean deposit(int amount){
-        if(amount < 0 || owner.cashAmount < amount){
-            System.out.println("입금실패입니다");
-            return false;
-        }else{
-            balance = balance + amount;
-            owner.cashAmount = owner.cashAmount - amount;
-            System.out.println(amount+"원 입금하였습니다. 잔고:" + balance + "현금: " + owner.cashAmount);
-            return true;
-        }
+      if(amount < 0 || owner.getCashAmount() < amount){
+          System.out.println("입금실패하였습니다. 잔고" + getBalance() + "현금" + owner.getCashAmount());
+          return false;
+      }else{
+        // 변수를 재설정하려면 setter 메서드를 사용해야 한다
+          owner.setCashAmount(owner.getCashAmount()-amount);
+          setBalance(getBalance() + amount);
+          System.out.println(amount + "입금하였습니다. 잔고:" + getBalance() + "현금:" + owner.getCashAmount());
+          return true;
+      }
     }
 
     // 파라미터: 출금할 액수
     // 리턴: 성공여부(boolean)
     boolean withdraw(int amount){
-        if(amount < 0 || amount > balance){
-            System.out.println("출금실패입니다. 잔고:"+balance +"원, 현금:" + owner.cashAmount);
+        if(amount < 0 || amount > getBalance()){
+            System.out.println("출금실패입니다. 잔고:"+ getBalance() +"원, 현금:" + owner.getCashAmount());
                 return false;
         }else{
-            balance = balance - amount;
-            owner.cashAmount = owner.cashAmount + amount;
-            System.out.println(amount +"원 출금하였습니다. 잔고:" + balance + "원, 현금" + owner.cashAmount);
+            setBalance(getBalance()-amount);
+            owner.setCashAmount(owner.getCashAmount()+amount);
+            System.out.println(amount +"원 출금하였습니다. 잔고:" + getBalance() + "원, 현금" + owner.getCashAmount());
                 return true;
         }
     }
