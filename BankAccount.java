@@ -18,19 +18,26 @@ public class BankAccount {
 
     // 파라미터: 입금할 액수
     // 리턴: 성공여부(boolean)
-    boolean deposit(int amount){
-      if(amount < 0 || owner.getCashAmount() < amount){
-          System.out.println("입금실패하였습니다. 잔고" + getBalance() + "현금" + owner.getCashAmount());
-          return false;
-      }else{
-        // 변수를 재설정하려면 setter 메서드를 사용해야 한다
-          owner.setCashAmount(owner.getCashAmount()-amount);
-          setBalance(getBalance() + amount);
-          System.out.println(amount + "입금하였습니다. 잔고:" + getBalance() + "현금:" + owner.getCashAmount());
-          return true;
-      }
+    boolean deposit(int amount) {
+        if (amount < 0 || owner.getCashAmount() < amount) {
+            System.out.println("입금실패하였습니다. 잔고" + getBalance() + "현금" + owner.getCashAmount());
+            return false;
+        } else {
+            // 변수를 재설정하려면 setter 메서드를 사용해야 한다
+            owner.setCashAmount(owner.getCashAmount() - amount);
+            setBalance(getBalance() + amount);
+            System.out.println(amount + "입금하였습니다. 잔고:" + getBalance() + "현금:" + owner.getCashAmount());
+            return true;
+        }
+    }
+    // 미국 달러를 입금하는 method
+    public boolean depositUSD(double amount, double exchangeRate){
+        return deposit((int)(amount * exchangeRate));
     }
 
+    public boolean depositJPN(double amount, double exchangeRate){
+        return deposit((int)(amount * exchangeRate));
+    }
     // 파라미터: 출금할 액수
     // 리턴: 성공여부(boolean)
     boolean withdraw(int amount){
