@@ -30,14 +30,11 @@ public class BankAccount {
             return true;
         }
     }
-    // 미국 달러를 입금하는 method
-    public boolean depositUSD(double amount, double exchangeRate){
+    // deposit 메서드가 하나 더 있지만은 parameter갯수로 구분이된다
+    public boolean deposit(double amount, double exchangeRate){
         return deposit((int)(amount * exchangeRate));
     }
 
-    public boolean depositJPN(double amount, double exchangeRate){
-        return deposit((int)(amount * exchangeRate));
-    }
     // 파라미터: 출금할 액수
     // 리턴: 성공여부(boolean)
     boolean withdraw(int amount){
