@@ -49,5 +49,32 @@ public class BankAccount {
         }
     }
 
+    // 송금메소드 작성
+
+    // 첫 번째 파라미터: 받는 사람의 계정 (BankAccount)
+    // 두 번째 파라미터: 이체할 금액 (정수)
+    // 리턴 : 성공여부 (불린)
+    public boolean transfer(BankAccount to_person, int amount){
+        boolean success;
+        if(amount < 0 || amount> balance){
+            success = false;
+        }else{
+            balance -= amount;
+            to_person.balance += amount;
+            success = true;
+        }
+        System.out.println(success + "from:" + owner.getName()+ "to: "
+                + to_person.owner.getName()
+                + "amount" + amount + "balance");
+        return success;
+    }
+
+    // 첫 번째 파라미터: 받는 사람 (Person)
+    // 두 번째 파라미터: 이체할 금액 (정수)
+    // 리턴 : 성공여부 (불린)
+    public boolean transfer(Person to_person, int amount){
+        return transfer(to_person.getAccount(),amount);
+    }
+
 
 }

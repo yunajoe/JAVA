@@ -35,5 +35,16 @@ public class Person{
         return account;
     }
 
+    // transfer 메서드는 account와 account 간의 거래이다
+    // Person to의 정보를 to의 account 정보로 바꾸어 호출
+    public boolean transfer(Person to_person, int amount){
+        return account.transfer(to_person.getAccount(), amount);
+    }
+    public boolean transfer(BankAccount to_person, int amount){
+        return account.transfer(to_person, amount);
+    }
+
+
+
 
 }
